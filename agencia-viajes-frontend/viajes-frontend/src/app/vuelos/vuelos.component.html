@@ -1,0 +1,23 @@
+<div class="container" *ngIf="vuelo">
+    <h3>{{title}}</h3>
+    <div class="row">
+      <div class="col-xs-3">idVuelo</div>
+      <div class="col-xs-9">{{ vuelo.idVuelo }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">aerolinea</div>
+      <div class="col-xs-9">{{ vuelo.aerolinea }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">horaSalida</div>
+      <div class="col-xs-9">{{ vuelo.horaSalida }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">horaLlegada</div>
+      <div class="col-xs-9">{{ vuelo.horaLlegada }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">permiteMaletas</div>
+      <div class="col-xs-9">{{ vuelo.permiteMaletas }}</div>
+    </div>
+</div>

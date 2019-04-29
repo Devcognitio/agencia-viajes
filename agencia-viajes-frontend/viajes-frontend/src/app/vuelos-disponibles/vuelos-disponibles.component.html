@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Vuelos Disponibles</h2>
+  <table class="table" id="tablaVuelosDisponibles">
+    <thead>
+      <tr>
+        <th scope="col">IdVuelo</th>
+        <th scope="col">aerolinea</th>
+        <th scope="col">horaSalida</th>
+        <th scope="col">horaLlegada</th>
+        <th scope="col">permiteMaletas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vuelo of vuelosDisponibles" (click)="seleccionarVuelo(vuelo)" [class.active]="vuelo.selected">
+        <td>{{vuelo.idVuelo}}</td>
+        <td>{{vuelo.aerolinea}}</td>
+        <td>{{vuelo.horaSalida}}</td>
+        <td>{{vuelo.horaLlegada}}</td>
+        <td>{{vuelo.permiteMaletas}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

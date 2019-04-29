@@ -1,0 +1,122 @@
+<div class="container">
+  <h1>Reserva Viaje</h1>
+
+  <div [hidden]="!submitted">
+    <h2>Resumen de Reserva:</h2>
+    <div class="row">
+      <div class="col-xs-3">IdReserva</div>
+      <div class="col-xs-9" id="idReserva">{{ reserva.idReserva }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Origen</div>
+      <div class="col-xs-9">{{ reserva.origen }}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-3">Destino</div>
+      <div class="col-xs-9">{{ reserva.destino }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">FechaIda</div>
+        <div class="col-xs-9">{{ reserva.fechaIda }}</div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-3">FechaRegreso</div>
+        <div class="col-xs-9">{{ reserva.fechaRegreso }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">NroPasajeros</div>
+        <div class="col-xs-9">{{ reserva.nroPasajeros }}</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">Clase</div>
+        <div class="col-xs-9">{{ reserva.clase }}</div>
+    </div>
+    <app-vuelos [title]='vueloIdaTitle' [vuelo]="reserva.vueloIda"></app-vuelos>
+    <app-vuelos [title]='vueloRegresoTitle' [vuelo]="reserva.vueloRegreso"></app-vuelos>
+    <button class="btn btn-primary" (click)="submitted=false">Editar</button>
+  </div>
+
+  <div [hidden]="submitted">
+    <form (ngSubmit)="onSubmit()" #reservaViajeForm="ngForm">
+
+      <div class="form-group">
+        <label for="origen">Origen</label>
+        <input type="text" class="form-control" id="origen" required
+        [(ngModel)]="reserva.origen" name="origen"
+        #origen="ngModel">
+        <div [hidden]="origen.valid || origen.pristine"
+        class="alert alert-danger">origen invalido</div>
+      </div>
+      
+      <div class="form-group">
+        <label for="destino">Destino</label>
+        <input type="text" class="form-control" id="destino" required
+        [(ngModel)]="reserva.destino" name="destino"
+        #destino="ngModel">
+        <div [hidden]="destino.valid || destino.pristine"
+        class="alert alert-danger">destino invalido</div>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaIda">FechaIda</label>
+        <input type="text" class="form-control" id="fechaIda" required
+        [(ngModel)]="reserva.fechaIda" name="fechaIda"
+        #fechaIda="ngModel">
+        <div [hidden]="fechaIda.valid || fechaIda.pristine"
+        class="alert alert-danger">fecha ida invalida</div>
+      </div>
+
+      <div class="form-group">
+        <label for="fechaRegreso">FechaRegreso</label>
+        <input type="text" class="form-control" id="fechaRegreso" required
+        [(ngModel)]="reserva.fechaRegreso" name="fechaRegreso"
+        #fechaRegreso="ngModel">
+        <div [hidden]="fechaRegreso.valid || fechaRegreso.pristine"
+        class="alert alert-danger">fecha regreso invalida</div>
+      </div>
+
+      <div class="form-group">
+        <label for="nroPasajeros">NumeroPasajeros</label>
+        <input type="number" class="form-control" id="nroPasajeros"
+        [(ngModel)]="reserva.nroPasajeros" name="nroPasajeros"
+        #nroPasajeros="ngModel">
+        <div [hidden]="nroPasajeros.valid || nroPasajeros.pristine"
+        class="alert alert-danger">numero de pasajeros invalido</div>
+      </div>
+
+      <div class="form-group">
+        <label for="clase">Clase</label>
+        <select class="form-control" id="clase" required
+        [(ngModel)]="reserva.clase" name="clase"
+        #clase="ngModel">
+          <option *ngFor="let claseName of clases" [value]="claseName">{{claseName}}</option>
+        </select>
+        <div [hidden]="clase.valid || clase.pristine"
+        class="alert alert-danger">Debe seleccionar una clase de vuelo</div>
+      </div>
+
+      <div class="form-group">
+        <label for="vueloIdaId">VueloIda</label>
+        <input type="text" class="form-control" id="vueloIdaId" required
+        [(ngModel)]="reserva.vueloIda.idVuelo" name="vueloIdaId" [disabled]="true">
+      </div>
+
+      <div class="form-group">
+        <label for="vueloIdaId">VueloRegreso</label>
+        <input type="text" class="form-control" id="vueloRegresoId" required
+        [(ngModel)]="reserva.vueloRegreso.idVuelo" name="vueloRegresoId" [disabled]="true">
+      </div>
+
+      <button type="button" class="btn btn-primary" id="consultarVuelosDisponibles"
+      (click)="buscarVuelosDisponibles()">Consultar</button><br/>
+
+      <app-vuelos-disponibles [hidden]="!consultaViajesDisponiblesRealizada" [vuelosDisponibles]="vuelosDisponibles" 
+      [reserva]="reserva"></app-vuelos-disponibles><br/>
+
+      <button type="submit" class="btn btn-success" id="submitReserva"
+      [disabled]="!reservaViajeForm.form.valid && !consultaViajesDisponiblesRealizada">Submit</button>
+
+    </form>
+  </div>
+</div>
