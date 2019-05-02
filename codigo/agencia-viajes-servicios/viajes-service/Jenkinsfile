@@ -16,7 +16,7 @@ monorepoMavenAwsTemplate {
     // 'true' para que se ejecute el paso integration tests de IC, 'false' para que no se ejecute
     executeIntegrationTestIC = 'true'
     // regex para encontrar el reporte de integration-test en formato JUnit, desde el project_home_path
-    jIntegrationTestReport = ''
+    jIntegrationTestReport = 'target/failsafe-reports/TEST-*.xml'
 
     //AWS
     awsRegion = 'us-west-2'
@@ -34,7 +34,7 @@ monorepoMavenAwsTemplate {
     // 'true' para que se ejecute el paso integration tests (postman) en Dllo, 'false' para que no se ejecute
     executeIntegrationTestDllo = 'true'
     // URL para compartir la collection de Postman
-    postmanCollectionUrl = ''
+    postmanCollectionUrl = 'https://www.getpostman.com/collections/5d482b2c07263cc38f6d'
 
     // 'true' para que se ejecute el paso E2E tests (SerenityBDD) en Dllo, 'false' para que no se ejecute
     executeE2eTestDllo = 'true'
