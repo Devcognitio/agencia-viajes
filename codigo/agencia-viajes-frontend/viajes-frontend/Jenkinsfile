@@ -1,29 +1,44 @@
 @Library('pipeline_templates') _
 
-monorepoMavenAwsTemplate {
+monorepoAngularAwsTemplate {
     // Nombre del proyecto al que pertenece este componente
     projectName = 'agencia-viajes'
     // path desde la raíz del repositorio para encontrar los fuentes del proyecto
-    project_home_path = 'codigo/agencia-viajes-servicios/viajes-service'
+    project_home_path = 'codigo/agencia-viajes-frontend/viajes-frontend'
     // path desde el project_home_path para encontrar el artefacto
-    artifactPath = 'target'
+    artifactPath = 'build'
     // nombre del repositorio en artifactory donde se guardarán los artefactos
     artifactoryRepoName = 'agencia-viajes'
 
     // regex para encontrar el reporte de test en formato JUnit, desde el project_home_path
-    jUnitTestReport = 'target/surefire-reports/TEST-*.xml'
+    jUnitTestReport = 'coverage/junit.xml'
+    coverageReport = 'coverage/coverage.xml'
 
     // 'true' para que se ejecute el paso integration tests de IC, 'false' para que no se ejecute
-    executeIntegrationTestIC = 'true'
+    executeIntegrationTestIC = 'false'
     // regex para encontrar el reporte de integration-test en formato JUnit, desde el project_home_path
-    jIntegrationTestReport = 'target/failsafe-reports/TEST-*.xml'
+    jIntegrationTestReport = ''
+
+    // 'true' para que se ejecute el paso aceptance tests de IC, 'false' para que no se ejecute
+    executeAceptanceTestIC = 'false'
+    // regex para encontrar el reporte de aceptance-test en formato JUnit, desde el project_home_path
+    jAceptanceTestReport = ''
+
+    // AWS S3 images copy
+    executeImagesToS3 = 'false'
+    // CDN profile
+    awsCdnProfile = 'TODO'
+    // List of statics folders, and AWS repos
+    awsStaticList=[]
+
+
 
     //AWS
     awsRegion = 'us-west-2'
-    awsEcrImageName = 'agencia-viajes/viajes-service-prueba'
+    awsEcrImageName = 'agencia-viajes/viajes-front-prueba'
     awsImageTag = '1.0'
-    awsEcsFamilyTaskDefinition = 'viajes-service-prueba'
-    awsEcsServiceName = 'viajes-service-prueba'
+    awsEcsFamilyTaskDefinition = 'viajes-front-prueba'
+    awsEcsServiceName = 'viajes-front-prueba'
 
     // AWS Dllo
     awsIamProfileDllo = 'TODO'
@@ -31,15 +46,10 @@ monorepoMavenAwsTemplate {
     awsEcsClusterDllo = 'cluster-agencia-viajes-desa'
     smokeTestUrlDllo = 'TODO'
 
-    // 'true' para que se ejecute el paso integration tests (postman) en Dllo, 'false' para que no se ejecute
-    executeIntegrationTestDllo = 'true'
-    // URL para compartir la collection de Postman
-    postmanCollectionUrl = 'https://www.getpostman.com/collections/5d482b2c07263cc38f6d'
-
     // 'true' para que se ejecute el paso E2E tests (SerenityBDD) en Dllo, 'false' para que no se ejecute
     executeE2eTestDllo = 'true'
     // URL del repositorio de SerenityBDD para el proyecto
-    gitE2eUrl = 'TODO'
+    gitE2eUrl = ''
     // regex para encontrar el reporte de e2e test en formato JUnit, desde el home del proyecto SerenityBDD
     je2eTestReport = 'target/site/serenity/*.xml'
     // path donde se encuentra el index.html generado por SerenityBDD, desde el home del proyecto SerenityBDD
@@ -56,6 +66,6 @@ monorepoMavenAwsTemplate {
 
     // 'true' para que se ejecute el paso E2E tests (SerenityBDD) en Dllo, 'false' para que no se ejecute
     executeE2eTestQa = 'false'
-
-    supportEmail = 'ronald.angulo@sura.pe'
+    
+    supportEmail = 'luis.polo@sura.pe'
 }
