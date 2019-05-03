@@ -16,6 +16,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +38,7 @@ public class VuelosControllerTest {
     private ReservaViaje reservaViajeMock;
 
     @Before
-    public void setUp(){
+    public void setUp() throws NoSuchAlgorithmException {
         List<Vuelo> vuelos = Arrays.asList(new Vuelo.VueloBuilder().conIdVuelo("VTest").build());
         ReservaViaje reservaViajeMock = new ReservaViaje.ReservaViajeBuilder().conOrigen("colombia").conIdReserva("ROkTest").build();
         ReservaViaje reservaViajeFailMock = new ReservaViaje.ReservaViajeBuilder().conOrigen("peru").conIdReserva("RFailTest").build();
