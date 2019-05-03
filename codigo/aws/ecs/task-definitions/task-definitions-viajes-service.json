@@ -1,0 +1,30 @@
+{
+    "family": "viajes-service",
+    "networkMode": "bridge",
+    "containerDefinitions": [
+        {
+            "image": "%AWS_ACCOUNT_ENVIRONMENT%/agencia-viajes/viajes:%BUILD_TAG%",
+            "name": "viajes-service",
+            "essential": true,
+            "memory": 300,
+            "portMappings": [
+                {
+                    "containerPort": 8080,
+                    "hostPort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "awslogs-cercania",
+                    "awslogs-region": "us-west-2",
+                    "awslogs-stream-prefix": "viajes-service"
+                }
+            },
+            "dnsSearchDomains": [
+                "privado.afpintegra.pe"
+            ]
+        }
+    ]
+}

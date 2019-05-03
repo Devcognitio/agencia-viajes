@@ -26,9 +26,9 @@ monorepoMavenAwsTemplate {
     awsEcsServiceName = 'viajes-service-prueba'
 
     // AWS Dllo
-    awsIamProfileDllo = 'TODO'
-    awsEcsUrlDllo = 'TODO'
-    awsEcsClusterDllo = 'cluster-agencia-viajes-desa'
+    awsIamProfileDllo = 'sura-integra-devops-jenkins-desarrollo'
+    awsEcsUrlDllo = 'ec2-34-211-25-99.us-west-2.compute.amazonaws.com'
+    awsEcsClusterDllo = 'agencia-viajes-cluster'
     smokeTestUrlDllo = 'TODO'
 
     // 'true' para que se ejecute el paso integration tests (postman) en Dllo, 'false' para que no se ejecute
