@@ -2,6 +2,8 @@ package com.devco.viajes.infraestructura.integracion;
 
 import com.devco.viajes.dominio.entidades.ReservaViaje;
 import com.devco.viajes.dominio.entidades.Vuelo;
+
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -22,13 +24,19 @@ public class VuelosDisponiblesAviancaClientMock implements VuelosDisponiblesClie
 
     @Override
     public List<Vuelo> consultarVuelosDisponibles(ReservaViaje reservaViaje) {
-        int max = vuelos.size();
-        int min = 0;
+        List<Vuelo> vuelosReturn;
+        try{
+            int max = vuelos.size();
+            int min = 0;
 
-        Random r = new Random();
-        int fromIndex = r.nextInt((max - min) + 1) + min;
-        int toIndex = r.nextInt((max - fromIndex) + 1) + fromIndex;
+            Random r = SecureRandom.getInstanceStrong();
+            int fromIndex = r.nextInt((max - min) + 1) + min;
+            int toIndex = r.nextInt((max - fromIndex) + 1) + fromIndex;
 
-        return vuelos.subList(fromIndex, toIndex);
+            vuelosReturn = vuelos.subList(fromIndex, toIndex);
+        }catch (Exception ex){
+            vuelosReturn = new ArrayList<>();
+        }
+        return vuelosReturn;
     }
 }

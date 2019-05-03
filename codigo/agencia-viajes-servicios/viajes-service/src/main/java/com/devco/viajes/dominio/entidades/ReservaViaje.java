@@ -3,6 +3,8 @@ package com.devco.viajes.dominio.entidades;
 import com.devco.viajes.dominio.valueobjects.ClaseViaje;
 import com.devco.viajes.excepciones.ParametrosIncorrectos;
 
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Random;
 
 public class ReservaViaje {
@@ -20,7 +22,7 @@ public class ReservaViaje {
     public ReservaViaje() {
     }
 
-    public ReservaViaje(String idReserva) {
+    public ReservaViaje(String idReserva) throws NoSuchAlgorithmException {
         if (idReserva == null || idReserva.isEmpty()){
             this.idReserva = generarIdReserva();
         }else{
@@ -28,8 +30,8 @@ public class ReservaViaje {
         }
     }
 
-    private String generarIdReserva() {
-        Random random = new Random();
+    private String generarIdReserva() throws NoSuchAlgorithmException {
+        Random random = SecureRandom.getInstanceStrong();
         StringBuilder sb = new StringBuilder();
 
         // first not 0 digit
@@ -146,7 +148,7 @@ public class ReservaViaje {
             return this;
         }
 
-        public ReservaViaje build(){
+        public ReservaViaje build() throws NoSuchAlgorithmException {
             ReservaViaje reservaViaje = new ReservaViaje(idReserva);
             reservaViaje.origen = this.origen;
             reservaViaje.destino = this.destino;
