@@ -6,7 +6,7 @@ monorepoAngularAwsTemplate {
     // path desde la raíz del repositorio para encontrar los fuentes del proyecto
     project_home_path = 'codigo/agencia-viajes-frontend/viajes-frontend'
     // path desde el project_home_path para encontrar el artefacto
-    artifactPath = 'build'
+    artifactPath = 'dist'
     // nombre del repositorio en artifactory donde se guardarán los artefactos
     artifactoryRepoName = 'agencia-viajes'
 
