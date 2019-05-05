@@ -5,7 +5,6 @@ process.env.CHROME_BIN = require('puppeteer').executablePath()
 module.exports = function (config) {
   config.set({
     basePath: '',
-    browsers: ['ChromeHeadless'],
     frameworks: ['jasmine', '@angular-devkit/build-angular'],
     plugins: [
       require('karma-jasmine'),
@@ -15,7 +14,6 @@ module.exports = function (config) {
       require('karma-junit-reporter'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
-    browsers: ['Chrome'],
     customLaunchers: {
       ChromeHeadlessCI: {
         base: 'ChromeHeadless',
