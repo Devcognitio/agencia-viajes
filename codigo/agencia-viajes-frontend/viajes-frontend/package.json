@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-prod": "ng build",
+    "sonar-scanner": "local_modules/sonar-scanner/bin/sonar-scanner",
     "test:unit": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI --code-coverage"
   },
   "private": true,
@@ -24,6 +25,7 @@
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
+    "sonar-scanner": "file:local_modules/sonar-scanner",
     "zone.js": "~0.8.26"
   },
   "devDependencies": {
