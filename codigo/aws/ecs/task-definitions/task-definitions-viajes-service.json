@@ -1,10 +1,10 @@
 {
-    "family": "viajes-service",
+    "family": "agencia-viajes-viajes-back",
     "networkMode": "bridge",
     "containerDefinitions": [
         {
-            "image": "%AWS_ACCOUNT_ENVIRONMENT%/agencia-viajes/viajes:%BUILD_TAG%",
-            "name": "viajes-service",
+            "image": "%AWS_ACCOUNT_ENVIRONMENT%/agencia-viajes/viajes-back:%BUILD_TAG%",
+            "name": "agencia-viajes-viajes-repo",
             "essential": true,
             "memory": 300,
             "portMappings": [
@@ -21,10 +21,7 @@
                     "awslogs-region": "us-west-2",
                     "awslogs-stream-prefix": "viajes-service"
                 }
-            },
-            "dnsSearchDomains": [
-                "privado.afpintegra.pe"
-            ]
+            }
         }
     ]
 }

@@ -18,17 +18,16 @@ monorepoMavenAwsTemplate {
     // regex para encontrar el reporte de integration-test en formato JUnit, desde el project_home_path
     jIntegrationTestReport = 'target/failsafe-reports/TEST-*.xml'
 
-    //AWS
     awsRegion = 'us-west-2'
-    awsEcrImageName = 'agencia-viajes/viajes-service-prueba'
+    awsEcrImageName = 'agencia-viajes/viajes-back'
     awsImageTag = '1.0'
-    awsEcsFamilyTaskDefinition = 'viajes-service-prueba'
-    awsEcsServiceName = 'viajes-service-prueba'
+    awsEcsFamilyTaskDefinition = 'agencia-viajes-viajes-back'
+    awsEcsServiceName = 'agencia-viajes-back'
 
     // AWS Dllo
     awsIamProfileDllo = 'sura-integra-devops-jenkins-desarrollo'
-    awsEcsUrlDllo = 'ec2-34-211-25-99.us-west-2.compute.amazonaws.com'
-    awsEcsClusterDllo = 'agencia-viajes-cluster'
+    awsEcsUrlDllo = '913442950244.dkr.ecr.us-west-2.amazonaws.com'
+    awsEcsClusterDllo = 'agencia-viajes-cluster '
     smokeTestUrlDllo = 'TODO'
 
     // 'true' para que se ejecute el paso integration tests (postman) en Dllo, 'false' para que no se ejecute

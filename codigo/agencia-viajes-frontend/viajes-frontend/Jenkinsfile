@@ -35,15 +35,15 @@ monorepoAngularAwsTemplate {
 
     //AWS
     awsRegion = 'us-west-2'
-    awsEcrImageName = 'agencia-viajes/viajes-front-prueba'
+    awsEcrImageName = 'agencia-viajes/viajes-front'
     awsImageTag = '1.0'
-    awsEcsFamilyTaskDefinition = 'viajes-front-prueba'
-    awsEcsServiceName = 'viajes-front-prueba'
+    awsEcsFamilyTaskDefinition = 'agencia-viajes-viajes-front'
+    awsEcsServiceName = 'agencia-viajes-front'
 
     // AWS Dllo
-    awsIamProfileDllo = 'TODO'
-    awsEcsUrlDllo = 'TODO'
-    awsEcsClusterDllo = 'cluster-agencia-viajes-desa'
+    awsIamProfileDllo = 'sura-integra-devops-jenkins-desarrollo'
+    awsEcsUrlDllo = '913442950244.dkr.ecr.us-west-2.amazonaws.com'
+    awsEcsClusterDllo = 'agencia-viajes-cluster '
     smokeTestUrlDllo = 'TODO'
 
     // 'true' para que se ejecute el paso E2E tests (SerenityBDD) en Dllo, 'false' para que no se ejecute

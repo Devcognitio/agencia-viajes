@@ -1,0 +1,27 @@
+{
+    "family": "agencia-viajes-viajes-front",
+	  "networkMode": "bridge",
+    "containerDefinitions": [
+        {
+            "image": "%AWS_ACCOUNT_ENVIRONMENT%/agencia-viages/viajes-front:%BUILD_TAG%",
+            "name": "agencia-viajes-viajes-repo",
+            "essential": true,
+            "memory": 200,
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 0,
+                    "protocol": "tcp"
+                }
+            ],
+      			"logConfiguration": {
+                    "logDriver": "awslogs",
+                    "options": {
+                        "awslogs-group": "awslogs-cercania",
+                        "awslogs-region": "us-west-2",
+                        "awslogs-stream-prefix": "cercania-web-frontend"
+                    }
+            }
+        }
+    ]
+}
